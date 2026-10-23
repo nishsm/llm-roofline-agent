@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-roofline-agent"
+version = "0.1.0"
+description = "First-principles roofline performance modeling for LLM inference, validated against real GPU measurements"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+plot = ["matplotlib"]
+bench = ["torch", "transformers"]
+dev = ["pytest"]
+
+[project.scripts]
+llm-roofline = "llm_roofline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
